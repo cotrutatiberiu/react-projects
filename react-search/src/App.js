@@ -6,7 +6,7 @@ import Title from "./components/TitleBar";
 import SearchBar from "./components/SearchBar";
 import ListArtist from "./components/ListArtist";
 
-export default class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
       <div className="App">
