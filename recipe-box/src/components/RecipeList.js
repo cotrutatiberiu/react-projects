@@ -16,6 +16,7 @@ export default class RecipeList extends React.Component {
       title: e.target.titleInput.value,
       ingredients: e.target.ingredientsInput.value
     });
+    console.log(this.state.title);
   }
   render() {
     return (
@@ -28,6 +29,7 @@ export default class RecipeList extends React.Component {
           <input type="text" name="ingredientsInput" />
           <input type="submit" value="Add Recipe" />
         </form>
+
       </div>
     );
   }
