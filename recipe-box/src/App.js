@@ -7,11 +7,7 @@ import { fleet } from "./data/data-file";
 
 class App extends Component {
   componentWillMount() {
-    let fleetFix = fleet;
-    for (let i = 0; i < fleet.length; i++) {
-      fleetFix[i]._id = `${i}`;
-    }
-    localStorage.setItem("recipeBook", JSON.stringify(fleetFix));
+    localStorage.setItem("recipeBook", JSON.stringify(fleet));
   }
   render() {
     return (
