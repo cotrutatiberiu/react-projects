@@ -6,7 +6,7 @@ export default class ListArtist extends React.Component {
     render() {
         return (
             <div>
-                <RenderArtist data={this.props.data}/>
+                <RenderArtist data={this.props.data} toSearch={this.props.toSearch}/>
             </div>
         )
     }

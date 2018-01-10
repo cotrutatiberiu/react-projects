@@ -17,7 +17,7 @@ export default class SearchBar extends React.Component{
             <div>
             <h1>{this.props.searchTitle}</h1>
             <input type="text" placeholder={this.props.searchPlaceholder} value={this.state.value} onChange={this.addToSearch}/>
-            <ListArtist data={this.props.data}/>
+            <ListArtist data={this.props.data} toSearch={this.state.value}/>
             </div>
         )
     }
