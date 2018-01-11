@@ -1,8 +1,14 @@
 import React from "react";
 
 export default class RenderRecipe extends React.Component {
-  deleteStuff(){
-    
+  deleteItem(id) {
+    let myJson = JSON.parse(localStorage.recipeBook);
+    for (let i = 0; i < myJson.length; i++) {
+      if (myJson[i]._id === id) {
+        myJson.splice([i], 1);
+      }
+    }
+    console.log(myJson);
   }
   render() {
     let myJson = JSON.parse(localStorage.recipeBook);
@@ -11,8 +17,12 @@ export default class RenderRecipe extends React.Component {
         <div key={item._id}>
           <h3>{item.title}</h3>
           <p>{item.ingredients.join(" , ")}</p>
-          <button type="submit" onSubmit={this.deleteStuff}>Delete</button>
-          <button type="button>">Edit</button>
+
+          <button type="button" onClick={this.deleteItem.bind(this, item._id)}>
+            Delete
+          </button>
+
+          <button type="button">Edit</button>
 
           <form onSubmit={this.addElement}>
             <input type="text" name="titleInput" />
