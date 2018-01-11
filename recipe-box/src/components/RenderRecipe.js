@@ -1,15 +1,20 @@
 import React from "react";
 
 export default class RenderRecipe extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      myJson:this.props.data
+    }
+  }
   deleteItem(id) {
-    let myJson = JSON.parse(localStorage.recipeBook);
-    for (let i = 0; i < myJson.length; i++) {
-      if (myJson[i]._id === id) {
-        myJson.splice([i], 1);
+    for (let i = 0; i < this.state.myJson.length; i++) {
+      if (this.state.myJson[i]._id === id) {
+        this.state.myJson.splice([i], 1);
       }
     }
-    localStorage.setItem("recipeBook", JSON.stringify(myJson));
-    console.log(myJson);
+    localStorage.setItem("recipeBook", JSON.stringify(this.state.myJson));
+    console.log(this.state.myJson);
   }
   render() {
     let myJson = JSON.parse(localStorage.recipeBook);
