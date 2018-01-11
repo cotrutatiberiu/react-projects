@@ -27,8 +27,12 @@ export default class RecipeList extends React.Component {
       ingredients: e.target.ingredientsInput.value
     });
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.state.myJson.push({ title: e.target.titleInput.value, ingredients: e.target.ingredientsInput.value.split(" ") });
     localStorage.setItem("recipeBook", this.state.myJson);
+=======
+    console.log(this.state.title);
+>>>>>>> parent of 728bee5... up
 =======
     console.log(this.state.title);
 >>>>>>> parent of 728bee5... up
