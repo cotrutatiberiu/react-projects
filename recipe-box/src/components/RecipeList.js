@@ -21,7 +21,8 @@ export default class RecipeList extends React.Component {
       title: e.target.titleInput.value,
       ingredients: e.target.ingredientsInput.value.split(" ")
     });
-    localStorage.setItem("recipeBook", this.state.myJson);
+
+    localStorage.setItem("recipeBook", JSON.stringify(this.state.myJson));
   }
   render() {
     let fixMyJson = this.state.myJson;
