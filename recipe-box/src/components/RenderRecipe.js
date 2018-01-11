@@ -8,6 +8,7 @@ export default class RenderRecipe extends React.Component {
         myJson.splice([i], 1);
       }
     }
+    localStorage.setItem("recipeBook", JSON.stringify(myJson));
     console.log(myJson);
   }
   render() {
