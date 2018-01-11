@@ -15,7 +15,6 @@ export default class RenderRecipe extends React.Component {
     }
     this.setState({ myJson: this.state.myJson });
     localStorage.setItem("recipeBook", JSON.stringify(this.state.myJson));
-    console.log(this.state.myJson);
   }
   render() {
     return this.state.myJson.map(item => {
