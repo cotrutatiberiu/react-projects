@@ -17,7 +17,6 @@ export default class RecipeList extends React.Component {
       title: e.target.titleInput.value,
       ingredients: e.target.ingredientsInput.value
     });
-
     this.state.myJson.push({
       title: e.target.titleInput.value,
       ingredients: e.target.ingredientsInput.value.split(" ")

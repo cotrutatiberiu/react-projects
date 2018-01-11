@@ -13,6 +13,7 @@ export default class RenderRecipe extends React.Component {
         this.state.myJson.splice([i], 1);
       }
     }
+    this.setState({ myJson: this.state.myJson });
     localStorage.setItem("recipeBook", JSON.stringify(this.state.myJson));
     console.log(this.state.myJson);
   }
