@@ -1,11 +1,11 @@
 import React from "react";
 
 export default class RenderRecipe extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      myJson:this.props.data
-    }
+    this.state = {
+      myJson: this.props.data
+    };
   }
   deleteItem(id) {
     for (let i = 0; i < this.state.myJson.length; i++) {
@@ -17,8 +17,7 @@ export default class RenderRecipe extends React.Component {
     console.log(this.state.myJson);
   }
   render() {
-    let myJson = JSON.parse(localStorage.recipeBook);
-    return myJson.map(item => {
+    return this.state.myJson.map(item => {
       return (
         <div key={item._id}>
           <h3>{item.title}</h3>

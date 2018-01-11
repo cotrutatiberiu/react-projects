@@ -12,10 +12,10 @@ class App extends Component {
     }
   }
   render() {
-    let jsonParse=JSON.parse(localStorage.recipeBook);
+    let jsonParse = JSON.parse(localStorage.recipeBook);
     return (
       <div>
-        <RecipeList data={jsonParse}/>
+        <RecipeList data={jsonParse} />
       </div>
     );
   }

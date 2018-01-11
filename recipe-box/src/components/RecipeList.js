@@ -7,7 +7,7 @@ export default class RecipeList extends React.Component {
     this.state = {
       title: "",
       ingredients: "",
-      myJson:this.props.data
+      myJson: this.props.data
     };
     this.addElement = this.addElement.bind(this);
   }
@@ -17,7 +17,7 @@ export default class RecipeList extends React.Component {
       title: e.target.titleInput.value,
       ingredients: e.target.ingredientsInput.value
     });
-    
+
     this.state.myJson.push({
       title: e.target.titleInput.value,
       ingredients: e.target.ingredientsInput.value.split(" ")
@@ -33,7 +33,7 @@ export default class RecipeList extends React.Component {
     localStorage.setItem("recipeBook", JSON.stringify(fixMyJson));
     return (
       <div>
-        <RenderRecipe data={this.state.myJson}/>
+        <RenderRecipe data={this.state.myJson} />
         <form onSubmit={this.addElement}>
           <h3>Title</h3>
           <input type="text" name="titleInput" />
