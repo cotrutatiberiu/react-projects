@@ -17,11 +17,20 @@ export default class RecipeList extends React.Component {
       ingredients: e.target.ingredientsInput.value
     });
     let myJson = JSON.parse(localStorage.recipeBook);
-    myJson.push({ title: e.target.titleInput.value, ingredients: e.target.ingredientsInput.value.split(" ") });
+    myJson.push({
+      title: e.target.titleInput.value,
+      ingredients: e.target.ingredientsInput.value.split(" ")
+    });
     let newJson = myJson;
     localStorage.setItem("recipeBook", JSON.stringify(newJson));
   }
   render() {
+    let getMyJson = JSON.parse(localStorage.recipeBook);
+    let fixMyJson = getMyJson;
+    for (let i = 0; i < getMyJson.length; i++) {
+      fixMyJson[i]._id = `${i}`;
+    }
+    localStorage.setItem("recipeBook", JSON.stringify(fixMyJson));
     return (
       <div>
         <RenderRecipe />
@@ -32,7 +41,6 @@ export default class RecipeList extends React.Component {
           <input type="text" name="ingredientsInput" />
           <input type="submit" value="Add Recipe" />
         </form>
-
       </div>
     );
   }
