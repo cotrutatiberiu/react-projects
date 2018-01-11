@@ -7,7 +7,7 @@ export default class RenderRecipe extends React.Component {
       return (
         <div key={item._id}>
           <h3>{item.title}</h3>
-          <p>{item.ingredients}</p>
+          <p>{item.ingredients.join(" , ")}</p>
         </div>
       );
     });
