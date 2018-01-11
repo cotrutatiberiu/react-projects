@@ -2,10 +2,10 @@ import React from "react";
 
 export default class RenderRecipe extends React.Component {
   render() {
-    console.log(this.props.myJson);
-    return this.props.myJson.map(item => {
+    let myJson = JSON.parse(localStorage.recipeBook);
+    return myJson.map(item => {
       return (
-        <div>
+        <div key={item._id}>
           <h3>{item.title}</h3>
           <p>{item.ingredients}</p>
         </div>

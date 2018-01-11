@@ -7,9 +7,7 @@ import { fleet } from "./data/data-file";
 
 class App extends Component {
   componentWillMount() {
-    if (localStorage.recipeBook === undefined) {
-      localStorage.setItem("recipeBook", JSON.stringify(fleet));
-    }
+    localStorage.setItem("recipeBook", JSON.stringify(fleet));
   }
   render() {
     return (
