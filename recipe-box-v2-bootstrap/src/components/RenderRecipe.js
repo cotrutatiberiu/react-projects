@@ -6,6 +6,8 @@ import { Modal } from "react-bootstrap";
 import { FormGroup } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 
+import RenderIngredients from "./RenderIngredients";
+
 export default class RenderRecipe extends React.Component {
   constructor(props) {
     super(props);
@@ -118,28 +120,5 @@ export default class RenderRecipe extends React.Component {
         </div>
       );
     });
-  }
-}
-
-class RenderIngredients extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={
-      items:this.props.items
-    }
-    this.call=this.call.bind(this);
-  }
-  call(){
-    for(let i=0;i<this.state.items;i++){
-      return <p>this.state.items[i]</p>      
-      }
-  }
-  render(){
-    
-    return(
-      <div>
-      <p>{this.call()}</p> 
-      </div>
-    )
   }
 }
