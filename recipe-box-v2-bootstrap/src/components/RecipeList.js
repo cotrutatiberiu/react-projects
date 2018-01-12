@@ -4,6 +4,7 @@ import { FormGroup } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
+import { Panel } from "react-bootstrap";
 
 export default class RecipeList extends React.Component {
   constructor(props) {
@@ -39,11 +40,13 @@ export default class RecipeList extends React.Component {
   render() {
     return (
       <div>
+        <Panel>
         <RenderRecipe
           data={this.state.myJson}
           title={this.state.title}
           ingredients={this.state.ingredients}
         />
+        </Panel>
         <Button bsStyle="primary" onClick={this.handleShow}>
           Add Recipe
         </Button>

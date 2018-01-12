@@ -21,7 +21,6 @@ export default class RenderRecipe extends React.Component {
   handleClose() {
     this.setState({ showModal: false });
   }
-
   handleShow() {
     this.setState({ showModal: true });
   }
@@ -56,7 +55,7 @@ export default class RenderRecipe extends React.Component {
     localStorage.setItem("recipeBook", JSON.stringify(fixMyJson));
     return this.state.myJson.map(item => {
       return (
-        <div key={item._id}>
+        <div key={item._id} className="listItem">
           <PanelGroup
             accordion
             id="accordion-uncontrolled-example"
@@ -70,8 +69,7 @@ export default class RenderRecipe extends React.Component {
               </Panel.Heading>
               <Panel.Body collapsible>
                 <h4>Ingredients</h4>
-                <p>{item.ingredients.join(" , ")}</p>
-
+                <p>{item.ingredients.join(" ")}</p>
                 <Button
                   bsStyle="danger"
                   type="button"
