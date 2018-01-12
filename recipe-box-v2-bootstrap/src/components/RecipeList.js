@@ -1,5 +1,8 @@
 import React from "react";
 import RenderRecipe from "./RenderRecipe";
+import { FormGroup } from "react-bootstrap";
+import { FormControl } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default class RecipeList extends React.Component {
   constructor(props) {
@@ -32,12 +35,21 @@ export default class RecipeList extends React.Component {
           title={this.state.title}
           ingredients={this.state.ingredients}
         />
+        
         <form onSubmit={this.addElement}>
-          <h3>Title</h3>
-          <input type="text" name="titleInput" />
-          <h3>Ingredients</h3>
-          <input type="text" name="ingredientsInput" />
-          <input type="submit" value="Add Recipe" />
+          <FormGroup controlId="formBasicText">
+            <FormControl
+              type="text"
+              name="titleInput"
+              placeholder="Enter text"
+            />
+            <FormControl
+              type="text"
+              name="ingredientsInput"              
+              placeholder="Enter text"
+            />
+            <Button type="submit" bsStyle="primary">Add Recipe</Button>
+          </FormGroup>
         </form>
       </div>
     );
