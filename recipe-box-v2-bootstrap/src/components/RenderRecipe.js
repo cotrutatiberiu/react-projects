@@ -1,4 +1,7 @@
 import React from "react";
+import { Panel } from "react-bootstrap";
+import { PanelGroup } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default class RenderRecipe extends React.Component {
   constructor(props) {
@@ -41,18 +44,37 @@ export default class RenderRecipe extends React.Component {
     return this.state.myJson.map(item => {
       return (
         <div key={item._id}>
-          <h3>{item.title}</h3>
-          <p>{item.ingredients.join(" , ")}</p>
+          <PanelGroup
+            accordion
+            id="accordion-uncontrolled-example"
+            defaultActiveKey="2"
+          >
+            <Panel eventKey="1">
+              <Panel.Heading>
+                <Panel.Title toggle>
+                  <h5>{item.title}</h5>
+                </Panel.Title>
+              </Panel.Heading>
+              <Panel.Body collapsible>
+                <h4>Ingredients</h4>
+                <p>{item.ingredients.join(" , ")}</p>
 
-          <button type="button" onClick={this.deleteItem.bind(this, item._id)}>
-            Delete
-          </button>
+                <Button
+                  bsStyle="danger"
+                  type="button"
+                  onClick={this.deleteItem.bind(this, item._id)}
+                >
+                  Delete
+                </Button>
 
-          <form onSubmit={this.editItem.bind(this, item._id)}>
-            <input type="text" name="titleInputEdit" />
-            <input type="text" name="ingredientsInputEdit" />
-            <input type="submit" value="Submit Edit" />
-          </form>
+                <form onSubmit={this.editItem.bind(this, item._id)}>
+                  <input type="text" name="titleInputEdit" />
+                  <input type="text" name="ingredientsInputEdit" />
+                  <input type="submit" value="Submit Edit" />
+                </form>
+              </Panel.Body>
+            </Panel>
+          </PanelGroup>
         </div>
       );
     });

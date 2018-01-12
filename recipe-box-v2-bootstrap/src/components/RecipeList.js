@@ -49,11 +49,11 @@ export default class RecipeList extends React.Component {
         </Button>
 
         <Modal show={this.state.showModal} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add a recipe</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form onSubmit={this.addElement}>
+          <form onSubmit={this.addElement}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add a recipe</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
               <FormGroup controlId="formBasicText">
                 <h4>Recipe:</h4>
                 <FormControl
@@ -67,17 +67,16 @@ export default class RecipeList extends React.Component {
                   name="ingredientsInput"
                   placeholder="Enter ingredients separated by space"
                 />
-                
               </FormGroup>
-            </form>
-          </Modal.Body>
-          <br/>
-          <Modal.Footer>
-          <Button type="submit" bsStyle="primary">
-                  Add a Recipe
-                </Button>
-            <Button onClick={this.handleClose}>Close</Button>
-          </Modal.Footer>
+            </Modal.Body>
+            <hr />
+            <Modal.Footer>
+              <Button type="submit" bsStyle="primary">
+                Add a Recipe
+              </Button>
+              <Button onClick={this.handleClose}>Close</Button>
+            </Modal.Footer>
+          </form>
         </Modal>
       </div>
     );
