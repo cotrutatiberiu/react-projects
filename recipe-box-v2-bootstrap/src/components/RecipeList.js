@@ -35,7 +35,7 @@ export default class RecipeList extends React.Component {
           title={this.state.title}
           ingredients={this.state.ingredients}
         />
-        
+
         <form onSubmit={this.addElement}>
           <FormGroup controlId="formBasicText">
             <FormControl
@@ -51,6 +51,13 @@ export default class RecipeList extends React.Component {
             <Button type="submit" bsStyle="primary">Add Recipe</Button>
           </FormGroup>
         </form>
+
+
+
+
+
+
+        
       </div>
     );
   }
