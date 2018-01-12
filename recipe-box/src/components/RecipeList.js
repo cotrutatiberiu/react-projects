@@ -32,7 +32,7 @@ export default class RecipeList extends React.Component {
     localStorage.setItem("recipeBook", JSON.stringify(fixMyJson));
     return (
       <div>
-        <RenderRecipe data={this.state.myJson} />
+        <RenderRecipe data={this.state.myJson} title={this.state.title} ingredients={this.state.ingredients}/>
         <form onSubmit={this.addElement}>
           <h3>Title</h3>
           <input type="text" name="titleInput" />
