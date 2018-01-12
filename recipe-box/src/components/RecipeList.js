@@ -27,7 +27,11 @@ export default class RecipeList extends React.Component {
   render() {
     return (
       <div>
-        <RenderRecipe data={this.state.myJson} title={this.state.title} ingredients={this.state.ingredients}/>
+        <RenderRecipe
+          data={this.state.myJson}
+          title={this.state.title}
+          ingredients={this.state.ingredients}
+        />
         <form onSubmit={this.addElement}>
           <h3>Title</h3>
           <input type="text" name="titleInput" />

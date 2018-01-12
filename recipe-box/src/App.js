@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 
 import RecipeList from "./components/RecipeList";
-// import AddButton from "./components/AddButton";
 import { fleet } from "./data/data-file";
 
 class App extends Component {
@@ -17,8 +16,14 @@ class App extends Component {
       <div>
         <RecipeList data={jsonParse} />
         <h3>Description:</h3>
-        <p>Application made with React.js,add as many recipes you want,delete them or edit them freely.</p>
-        <p>The items are stored in a json format in the the local storage of your browser(inspect page->application->local storage for chrome users)</p>
+        <p>
+          Application made with React.js,add as many recipes you want,delete
+          them or edit them freely.
+        </p>
+        <p>
+          The items are stored in a json format in the the local storage of your
+          browser(inspect page->application->local storage for chrome users)
+        </p>
         <h3>Rules:</h3>
         <ol>
           <li>Add multiple elements with a space between them.</li>

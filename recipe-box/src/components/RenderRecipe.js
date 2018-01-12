@@ -48,8 +48,6 @@ export default class RenderRecipe extends React.Component {
             Delete
           </button>
 
-          <button type="button">Edit</button>
-
           <form onSubmit={this.editItem.bind(this, item._id)}>
             <input type="text" name="titleInputEdit" />
             <input type="text" name="ingredientsInputEdit" />
