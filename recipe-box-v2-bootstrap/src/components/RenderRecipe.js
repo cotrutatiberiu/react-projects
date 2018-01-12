@@ -69,7 +69,8 @@ export default class RenderRecipe extends React.Component {
               </Panel.Heading>
               <Panel.Body collapsible>
                 <h4>Ingredients</h4>
-                <p>{item.ingredients.join(" ")}</p>
+                {/* <p>{item.ingredients.join(" ")}</p> */}
+                <RenderIngredients items={item.ingredients}/>
                 <Button
                   bsStyle="danger"
                   type="button"
@@ -117,5 +118,28 @@ export default class RenderRecipe extends React.Component {
         </div>
       );
     });
+  }
+}
+
+class RenderIngredients extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      items:this.props.items
+    }
+    this.call=this.call.bind(this);
+  }
+  call(){
+    for(let i=0;i<this.state.items;i++){
+      return <p>this.state.items[i]</p>      
+      }
+  }
+  render(){
+    
+    return(
+      <div>
+      <p>{this.call()}</p> 
+      </div>
+    )
   }
 }
