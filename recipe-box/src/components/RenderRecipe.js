@@ -33,6 +33,11 @@ export default class RenderRecipe extends React.Component {
     localStorage.setItem("recipeBook", JSON.stringify(this.state.myJson));
   }
   render() {
+    let fixMyJson = this.state.myJson;
+    for (let i = 0; i < this.state.myJson.length; i++) {
+      fixMyJson[i]._id = `${i}`;
+    }
+    localStorage.setItem("recipeBook", JSON.stringify(fixMyJson));
     return this.state.myJson.map(item => {
       return (
         <div key={item._id}>

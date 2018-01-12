@@ -16,6 +16,20 @@ class App extends Component {
     return (
       <div>
         <RecipeList data={jsonParse} />
+        <h3>Description:</h3>
+        <p>Application made with React.js,add as many recipes you want,delete them or edit them freely.</p>
+        <p>The items are stored in a json format in the the local storage of your browser(inspect page->application->local storage for chrome users)</p>
+        <h3>Rules:</h3>
+        <ol>
+          <li>Add multiple elements with a space between them.</li>
+        </ol>
+        <h5>
+          Project remade from{" "}
+          <a href="https://www.freecodecamp.org/challenges/build-a-recipe-box">
+            this
+          </a>{" "}
+          challenge.
+        </h5>
       </div>
     );
   }

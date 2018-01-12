@@ -25,11 +25,6 @@ export default class RecipeList extends React.Component {
     localStorage.setItem("recipeBook", JSON.stringify(this.state.myJson));
   }
   render() {
-    let fixMyJson = this.state.myJson;
-    for (let i = 0; i < this.state.myJson.length; i++) {
-      fixMyJson[i]._id = `${i}`;
-    }
-    localStorage.setItem("recipeBook", JSON.stringify(fixMyJson));
     return (
       <div>
         <RenderRecipe data={this.state.myJson} title={this.state.title} ingredients={this.state.ingredients}/>
