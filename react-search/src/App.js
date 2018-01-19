@@ -7,6 +7,7 @@ import SearchBar from "./components/SearchBar";
 
 export default class App extends React.Component {
   render() {
+    //a
     var AppStyle={
       backgroundColor:"#023436",
       height:"100vh",
