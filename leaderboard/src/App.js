@@ -53,7 +53,7 @@ class App extends React.Component {
         </div>
         <table>
           <tbody>
-            <RenderItems alltimeData={this.state.toRender} />
+            <RenderItems dataToRender={this.state.toRender} />
           </tbody>
         </table>
       </div>
