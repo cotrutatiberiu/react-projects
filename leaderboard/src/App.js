@@ -35,8 +35,10 @@ class App extends React.Component {
         })
       });
     } else if (this.state.toRender === this.state.recentData) {
-      this.state.toRender.sort(function(a, b) {
-        return a.alltime - b.alltime;
+      this.setState({
+        toRender: this.state.toRender.sort(function(a, b) {
+          return a.alltime - b.alltime;
+        })
       });
     }
   }
