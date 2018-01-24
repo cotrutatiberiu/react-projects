@@ -10,16 +10,16 @@ class App extends React.Component {
     this.state = {
       alltimeData: [],
       recentData: [],
-      toRender:[],
-      sorted:false
+      toRender: [],
+      sorted: false
     };
-    this.toSort=this.toSort.bind(this);
+    this.toSort = this.toSort.bind(this);
   }
   componentWillMount() {
     fetch("https://fcctop100.herokuapp.com/api/fccusers/top/alltime")
       .then(response => response.json())
       .then(data => {
-        this.setState({ alltimeData: data,toRender:data });
+        this.setState({ alltimeData: data, toRender: data });
       });
     fetch("https://fcctop100.herokuapp.com/api/fccusers/top/recent")
       .then(response => response.json())
@@ -27,11 +27,17 @@ class App extends React.Component {
         this.setState({ recentData: data });
       });
   }
-  toSort(){
-    if(this.state.toRender===this.state.alltimeData){
-      
-    }else if(this.state.toRender===this.state.recentData){
-      
+  toSort() {
+    if (this.state.toRender === this.state.alltimeData) {
+      this.setState({
+        toRender: this.state.toRender.sort(function(a, b) {
+          return a.alltime - b.alltime;
+        })
+      });
+    } else if (this.state.toRender === this.state.recentData) {
+      this.state.toRender.sort(function(a, b) {
+        return a.alltime - b.alltime;
+      });
     }
   }
   render() {
@@ -39,14 +45,25 @@ class App extends React.Component {
       <div>
         <Title title="Leaderboard" />
 
-        <div onClick={ ()=>this.setState({toRender:this.state.recentData,sorted:false})} id="a">
+        <div
+          onClick={() =>
+            this.setState({ toRender: this.state.recentData, sorted: false })
+          }
+          id="a"
+        >
           <Button buttonName="Show Recent" />
         </div>
-        <div onClick={()=>this.setState({toRender:this.state.alltimeData,sorted:false})} name="all" id="b">
+        <div
+          onClick={() =>
+            this.setState({ toRender: this.state.alltimeData, sorted: false })
+          }
+          name="all"
+          id="b"
+        >
           <Button buttonName="Show Alltime" />
         </div>
         <div onClick={this.toSort}>
-          <Button buttonName="Sort by Recent"/>
+          <Button buttonName="Sort by Recent" />
         </div>
         <div onClick={this.toSort}>
           <Button buttonName="Sort by Alltime" />
