@@ -104,26 +104,28 @@ class App extends React.Component {
     return (
       <div>
         <Title title="Leaderboard" />
-        <div
+        <ul>
+        <li><div
           onClick={() =>
             this.setState({ toRender: this.state.recentData, sorted: false })
           }
         >
           <Button buttonName="Show Recent" />
-        </div>
-        <div
+        </div></li>
+        <li><div
           onClick={() =>
             this.setState({ toRender: this.state.alltimeData, sorted: false })
           }
         >
           <Button buttonName="Show Alltime" />
-        </div>
-        <div onClick={() => this.toSort("recent")}>
+        </div></li>
+        <li><div onClick={() => this.toSort("recent")}>
           <Button buttonName="Sort by Recent" />
-        </div>
-        <div onClick={() => this.toSort("alltime")}>
+        </div></li>
+        <li><div onClick={() => this.toSort("alltime")}>
           <Button buttonName="Sort by Alltime" />
-        </div>
+        </div></li>
+        </ul>
         <table>
           <tbody>
           <tr>
