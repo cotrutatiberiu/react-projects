@@ -11,7 +11,7 @@ class App extends React.Component {
       alltimeData: [],
       recentData: [],
       toRender: [],
-      sorted: false
+      ascending: false
     };
     this.toSort = this.toSort.bind(this);
   }
@@ -27,26 +27,83 @@ class App extends React.Component {
         this.setState({ recentData: data });
       });
   }
-  toSort() {
+  toSort(sortBy) {
     if (this.state.toRender === this.state.alltimeData) {
-      this.setState({
-        toRender: this.state.toRender.sort(function(a, b) {
-          return a.alltime - b.alltime;
-        })
-      });
+      switch (sortBy) {
+        case "recent":
+          if (this.state.ascending === false) {
+            this.setState({
+              toRender: this.state.toRender.sort(function(a, b) {
+                return a.recent - b.recent;
+              }),
+              ascending: true
+            });
+          } else {
+            this.setState({
+              toRender: this.state.toRender.reverse(),
+              ascending: false
+            });
+          }
+          break;
+        case "alltime":
+          if (this.state.ascending === false) {
+            this.setState({
+              toRender: this.state.toRender.sort(function(a, b) {
+                return a.alltime - b.alltime;
+              }),
+              ascending: true
+            });
+          } else {
+            this.setState({
+              toRender: this.state.toRender.reverse(),
+              ascending: false
+            });
+          }
+          break;
+        default:
+          break;
+      }
     } else if (this.state.toRender === this.state.recentData) {
-      this.setState({
-        toRender: this.state.toRender.sort(function(a, b) {
-          return a.alltime - b.alltime;
-        })
-      });
+      switch (sortBy) {
+        case "recent":
+          if (this.state.ascending === false) {
+            this.setState({
+              toRender: this.state.toRender.sort(function(a, b) {
+                return a.recent - b.recent;
+              }),
+              ascending: true
+            });
+          } else {
+            this.setState({
+              toRender: this.state.toRender.reverse(),
+              ascending: false
+            });
+          }
+          break;
+        case "alltime":
+          if (this.state.ascending === false) {
+            this.setState({
+              toRender: this.state.toRender.sort(function(a, b) {
+                return a.alltime - b.alltime;
+              }),
+              ascending: true
+            });
+          } else {
+            this.setState({
+              toRender: this.state.toRender.reverse(),
+              ascending: false
+            });
+          }
+          break;
+        default:
+          break;
+      }
     }
   }
   render() {
     return (
       <div>
         <Title title="Leaderboard" />
-
         <div
           onClick={() =>
             this.setState({ toRender: this.state.recentData, sorted: false })
@@ -64,10 +121,10 @@ class App extends React.Component {
         >
           <Button buttonName="Show Alltime" />
         </div>
-        <div onClick={this.toSort}>
+        <div onClick={() => this.toSort("recent")}>
           <Button buttonName="Sort by Recent" />
         </div>
-        <div onClick={this.toSort}>
+        <div onClick={() => this.toSort("alltime")}>
           <Button buttonName="Sort by Alltime" />
         </div>
         <table>
