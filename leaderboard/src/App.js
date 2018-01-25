@@ -108,7 +108,6 @@ class App extends React.Component {
           onClick={() =>
             this.setState({ toRender: this.state.recentData, sorted: false })
           }
-          id="a"
         >
           <Button buttonName="Show Recent" />
         </div>
@@ -116,8 +115,6 @@ class App extends React.Component {
           onClick={() =>
             this.setState({ toRender: this.state.alltimeData, sorted: false })
           }
-          name="all"
-          id="b"
         >
           <Button buttonName="Show Alltime" />
         </div>
@@ -129,6 +126,13 @@ class App extends React.Component {
         </div>
         <table>
           <tbody>
+          <tr>
+            <td></td>
+    <td>Username</td>
+    <td>Recent</td>
+    <td>Alltime</td>
+    <td>Last Activity</td>
+  </tr>
             <RenderItems dataToRender={this.state.toRender} />
           </tbody>
         </table>
