@@ -126,7 +126,7 @@ class App extends React.Component {
           <Button buttonName="Sort by Alltime" />
         </div></li>
         </ul>
-        <table>
+        <table className="test">
           <tbody>
           <tr>
     <td className="category">Username</td>

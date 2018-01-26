@@ -16,6 +16,12 @@ body{
     text-align: center;
     cursor:pointer;
 }
+.buttonSwitch:hover{
+    background-color: #1ADFEE;
+}
+.buttonSwitch:active{
+    background-color: #52DE8E;
+}
 .userImg{
     width:40px;
     height: 40px;
@@ -39,4 +45,18 @@ ul li{
     font-size: 20px;
     text-align: center;
     color: orange;
+}
+.test{
+    margin: auto;
+}
+.tesc{
+    display: grid;
+}
+.p1{
+    grid-column: 1/2;
+    align-self: center;
+}
+.p2{
+    grid-column: 2/3;
+    align-self: center;
 }
