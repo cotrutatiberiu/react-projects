@@ -30,3 +30,13 @@ ul li{
     display: inline-block;
     margin:0px 10px;
 }
+.tableCase{
+    border: solid 1px #F4F1BB;
+    padding: 0px 20px;
+    color: #F4F1BB;
+}
+.category{
+    font-size: 20px;
+    text-align: center;
+    color: orange;
+}

@@ -129,11 +129,10 @@ class App extends React.Component {
         <table>
           <tbody>
           <tr>
-            <td></td>
-    <td>Username</td>
-    <td>Recent</td>
-    <td>Alltime</td>
-    <td>Last Activity</td>
+    <td className="category">Username</td>
+    <td className="category">Recent</td>
+    <td className="category">Alltime</td>
+    <td className="category">Last Activity</td>
   </tr>
             <RenderItems dataToRender={this.state.toRender} />
           </tbody>
