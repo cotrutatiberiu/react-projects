@@ -17,21 +17,34 @@ class App extends React.Component {
   }
   componentWillMount() {
     fetch("https://fcctop100.herokuapp.com/api/fccusers/top/alltime")
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Link is wrong");
+        }
+      })
       .then(data => {
         this.setState({ alltimeData: data, toRender: data });
       });
     fetch("https://fcctop100.herokuapp.com/api/fccusers/top/recent")
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Link is wrong");
+        }
+      })
       .then(data => {
         this.setState({ recentData: data });
-      });
+      })
   }
-  toSort(sortBy) {
+  toSort(sortBy,e) {
     if (this.state.toRender === this.state.alltimeData) {
       switch (sortBy) {
         case "recent":
           if (this.state.ascending === false) {
+            console.log(e);
             this.setState({
               toRender: this.state.toRender.sort(function(a, b) {
                 return a.recent - b.recent;
@@ -105,35 +118,49 @@ class App extends React.Component {
       <div>
         <Title title="Leaderboard" />
         <ul>
-        <li><div
-          onClick={() =>
-            this.setState({ toRender: this.state.recentData, sorted: false })
-          }
-        >
-          <Button buttonName="Show Recent" />
-        </div></li>
-        <li><div
-          onClick={() =>
-            this.setState({ toRender: this.state.alltimeData, sorted: false })
-          }
-        >
-          <Button buttonName="Show Alltime" />
-        </div></li>
-        <li><div onClick={() => this.toSort("recent")}>
-          <Button buttonName="Sort by Recent" />
-        </div></li>
-        <li><div onClick={() => this.toSort("alltime")}>
-          <Button buttonName="Sort by Alltime" />
-        </div></li>
+          <li>
+            <div
+              onClick={() =>
+                this.setState({
+                  toRender: this.state.recentData,
+                  sorted: false
+                })
+              }
+            >
+              <Button buttonName="Show Recent" />
+            </div>
+          </li>
+          <li>
+            <div
+              onClick={() =>
+                this.setState({
+                  toRender: this.state.alltimeData,
+                  sorted: false
+                })
+              }
+            >
+              <Button buttonName="Show Alltime" />
+            </div>
+          </li>
+          <li>
+            <div onClick={() => this.toSort("recent")}>
+              <Button buttonName="Sort by Recent"/>
+            </div>
+          </li>
+          <li>
+            <div onClick={() => this.toSort("alltime")}>
+              <Button buttonName="Sort by Alltime" />
+            </div>
+          </li>
         </ul>
         <table className="test">
           <tbody>
-          <tr>
-    <td className="category">Username</td>
-    <td className="category">Recent</td>
-    <td className="category">Alltime</td>
-    <td className="category">Last Activity</td>
-  </tr>
+            <tr>
+              <td className="category">Username</td>
+              <td className="category">Recent</td>
+              <td className="category">Alltime</td>
+              <td className="category">Last Activity</td>
+            </tr>
             <RenderItems dataToRender={this.state.toRender} />
           </tbody>
         </table>
