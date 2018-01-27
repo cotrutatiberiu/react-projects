@@ -90,32 +90,40 @@ class App extends React.Component {
     } else if (this.state.toRender === this.state.recentData) {
       switch (sortBy) {
         case "recent":
-          if (this.state.ascending === false) {
+          if (this.state.ascendingRecent === false) {
             this.setState({
               toRender: this.state.toRender.sort(function(a, b) {
                 return a.recent - b.recent;
               }),
-              ascending: true
+              ascendingRecent: true,
+              sortByRecentClass: "buttonSwitch sorted",
+              sortByAllClass: "buttonSwitch"
             });
           } else {
             this.setState({
               toRender: this.state.toRender.reverse(),
-              ascending: false
+              ascendingRecent: false,
+              sortByRecentClass: "buttonSwitch sorted",
+              sortByAllClass: "buttonSwitch"
             });
           }
           break;
         case "alltime":
-          if (this.state.ascending === false) {
+          if (this.state.ascendingAll === false) {
             this.setState({
               toRender: this.state.toRender.sort(function(a, b) {
                 return a.alltime - b.alltime;
               }),
-              ascending: true
+              ascendingAll: true,
+              sortByAllClass: "buttonSwitch sorted",
+              sortByRecentClass: "buttonSwitch"
             });
           } else {
             this.setState({
               toRender: this.state.toRender.reverse(),
-              ascending: false
+              ascendingAll: false,
+              sortByAllClass: "buttonSwitch resorted",
+              sortByRecentClass: "buttonSwitch"
             });
           }
           break;
@@ -134,7 +142,9 @@ class App extends React.Component {
               onClick={() =>
                 this.setState({
                   toRender: this.state.recentData,
-                  sorted: false
+                  sorted: false,
+                  sortByRecentClass: "buttonSwitch",
+                  sortByAllClass: "buttonSwitch"
                 })
               }
             >
@@ -146,7 +156,9 @@ class App extends React.Component {
               onClick={() =>
                 this.setState({
                   toRender: this.state.alltimeData,
-                  sorted: false
+                  sorted: false,
+                  sortByRecentClass: "buttonSwitch",
+                  sortByAllClass: "buttonSwitch"
                 })
               }
             >
