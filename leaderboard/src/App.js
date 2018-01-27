@@ -11,7 +11,8 @@ class App extends React.Component {
       alltimeData: [],
       recentData: [],
       toRender: [],
-      ascending: false,
+      ascendingRecent: false,
+      ascendingAll: false,
       sortByRecentClass: "buttonSwitch",
       sortByAllClass: "buttonSwitch"
     };
@@ -42,41 +43,42 @@ class App extends React.Component {
       });
   }
   toSort(sortBy) {
+    this.setState({ ascendingAll: false, ascendingRecent: false });
     if (this.state.toRender === this.state.alltimeData) {
       switch (sortBy) {
         case "recent":
-          if (this.state.ascending === false) {
+          if (this.state.ascendingRecent === false) {
             this.setState({
               toRender: this.state.toRender.sort(function(a, b) {
                 return a.recent - b.recent;
               }),
-              ascending: true,
+              ascendingRecent: true,
               sortByRecentClass: "buttonSwitch sorted",
               sortByAllClass: "buttonSwitch"
             });
           } else {
             this.setState({
               toRender: this.state.toRender.reverse(),
-              ascending: false,
+              ascendingRecent: false,
               sortByRecentClass: "buttonSwitch resorted",
               sortByAllClass: "buttonSwitch"
             });
           }
           break;
         case "alltime":
-          if (this.state.ascending === false) {
+          if (this.state.ascendingAll === false) {
             this.setState({
               toRender: this.state.toRender.sort(function(a, b) {
                 return a.alltime - b.alltime;
               }),
-              ascending: true,
+              ascendingAll: true,
               sortByAllClass: "buttonSwitch sorted",
               sortByRecentClass: "buttonSwitch"
             });
           } else {
             this.setState({
               toRender: this.state.toRender.reverse(),
-              ascending: false,
+              ascendingAll: false,
               sortByAllClass: "buttonSwitch resorted",
               sortByRecentClass: "buttonSwitch"
             });
