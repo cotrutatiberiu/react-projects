@@ -11,7 +11,9 @@ class App extends React.Component {
       alltimeData: [],
       recentData: [],
       toRender: [],
-      ascending: false
+      ascending: false,
+      sortByRecentClass: "buttonSwitch",
+      sortByAllClass: "buttonSwitch"
     };
     this.toSort = this.toSort.bind(this);
   }
@@ -37,24 +39,27 @@ class App extends React.Component {
       })
       .then(data => {
         this.setState({ recentData: data });
-      })
+      });
   }
-  toSort(sortBy,e) {
+  toSort(sortBy) {
     if (this.state.toRender === this.state.alltimeData) {
       switch (sortBy) {
         case "recent":
           if (this.state.ascending === false) {
-            console.log(e);
             this.setState({
               toRender: this.state.toRender.sort(function(a, b) {
                 return a.recent - b.recent;
               }),
-              ascending: true
+              ascending: true,
+              sortByRecentClass: "buttonSwitch sorted",
+              sortByAllClass: "buttonSwitch"
             });
           } else {
             this.setState({
               toRender: this.state.toRender.reverse(),
-              ascending: false
+              ascending: false,
+              sortByRecentClass: "buttonSwitch resorted",
+              sortByAllClass: "buttonSwitch"
             });
           }
           break;
@@ -64,12 +69,16 @@ class App extends React.Component {
               toRender: this.state.toRender.sort(function(a, b) {
                 return a.alltime - b.alltime;
               }),
-              ascending: true
+              ascending: true,
+              sortByAllClass: "buttonSwitch sorted",
+              sortByRecentClass: "buttonSwitch"
             });
           } else {
             this.setState({
               toRender: this.state.toRender.reverse(),
-              ascending: false
+              ascending: false,
+              sortByAllClass: "buttonSwitch resorted",
+              sortByRecentClass: "buttonSwitch"
             });
           }
           break;
@@ -127,7 +136,7 @@ class App extends React.Component {
                 })
               }
             >
-              <Button buttonName="Show Recent" />
+              <Button buttonName="Show Recent" sendClass="buttonSwitch" />
             </div>
           </li>
           <li>
@@ -139,17 +148,23 @@ class App extends React.Component {
                 })
               }
             >
-              <Button buttonName="Show Alltime" />
+              <Button buttonName="Show Alltime" sendClass="buttonSwitch" />
             </div>
           </li>
           <li>
             <div onClick={() => this.toSort("recent")}>
-              <Button buttonName="Sort by Recent"/>
+              <Button
+                buttonName="Sort by Recent"
+                sendClass={this.state.sortByRecentClass}
+              />
             </div>
           </li>
           <li>
             <div onClick={() => this.toSort("alltime")}>
-              <Button buttonName="Sort by Alltime" />
+              <Button
+                buttonName="Sort by Alltime"
+                sendClass={this.state.sortByAllClass}
+              />
             </div>
           </li>
         </ul>
